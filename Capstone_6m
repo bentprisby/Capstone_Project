@@ -1,1 +1,62 @@
+import pandas as pd
 
+# Define the file path (update as needed)
+file_path = '/Users/benprisby/Downloads/Sunwhereused-templates3_part2.xlsx'
+
+# Define the column names:
+# Column A: Template, B: Exp Mat Group, C: Make_Item, D: Component, E: Plant,
+# Columns F to T: Jan_2024, Feb_2024, Mar_2024, Apr_2024, May_2024, Jun_2024, Jul_2024,
+# Aug_2024, Sep_2024, Oct_2024, Nov_2024, Dec_2024, Jan_2025, Feb_2025, Mar_2025,
+# Column U: Total (not used here since we'll compute totals from F to T)
+columns = [
+    'Template', 'Exp_Mat_Group', 'Make_Item', 'Component', 'Plant',
+    'Jan_2024', 'Feb_2024', 'Mar_2024', 'Apr_2024',
+    'May_2024', 'Jun_2024', 'Jul_2024', 'Aug_2024', 'Sep_2024',
+    'Oct_2024', 'Nov_2024', 'Dec_2024',
+    'Jan_2025', 'Feb_2025', 'Mar_2025',
+    'Total'
+]
+
+try:
+    # Read the Excel file without enforcing data types initially
+    df = pd.read_excel(file_path, header=0, names=columns)
+    print("File successfully loaded.")
+    df['Plant'] = df['Plant'].astype(str).str.strip()
+
+    # Define the monthly columns for the past 6 months (Column O to Column T)
+    month_cols = columns[14:20]  # "Oct_2024" to "Mar_2025"
+
+    # Convert the monthly columns to numeric values, forcing errors to NaN, and fill with 0
+    for col in month_cols:
+        df[col] = pd.to_numeric(df[col], errors='coerce')
+    df[month_cols] = df[month_cols].fillna(0)
+
+    # Compute the total for each row by summing the monthly columns
+    df['ComputedTotal'] = df[month_cols].sum(axis=1)
+
+    # Group by 'Plant', 'Make_Item', and 'Component'
+    grouped = df.groupby(['Plant', 'Make_Item', 'Component'])['ComputedTotal'].sum().reset_index()
+    grouped.rename(columns={'ComputedTotal': 'Sum_Total'}, inplace=True)
+
+    # For each Plant and Make_Item, calculate its overall total
+    grouped['Grand_Total'] = grouped.groupby(['Plant', 'Make_Item'])['Sum_Total'].transform('sum')
+
+    # Calculate the composition percentage for each Component within each (Plant, Make_Item)
+    grouped['Composition_Percentage'] = (grouped['Sum_Total'] / grouped['Grand_Total']) * 100
+
+    # Optionally, drop the intermediate 'Grand_Total' column if not needed
+    result = grouped.drop(columns=['Grand_Total'])
+
+    # Print the final pivot table
+    print("Pivot Table: Composition Percentage of each Component within its Make_Item")
+    print(result)
+
+    # Export the pivot table to a CSV file
+    export_path = '/Users/benprisby/Downloads/Make_Item_Component_Pivot_6_Month.csv'
+    result.to_csv(export_path, index=False)
+    print(f"Exported pivot table to {export_path}")
+
+except FileNotFoundError:
+    print(f"Error: The file '{file_path}' was not found.")
+except Exception as e:
+    print(f"An error occurred: {e}")
