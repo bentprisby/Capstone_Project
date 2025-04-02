@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onyx Detailing Solutions - Meticulous Auto Care</title>
+    <meta name="description" content="Onyx Detailing Solutions offers professional interior deep cleaning and exterior wash services by Ben Prisby. Book online easily.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      @font-face {
+        font-family: 'LucideIcons';
+        src: url('https://cdn.jsdelivr.net/npm/lucide-static@latest/font/Lucide.ttf') format('truetype');
+      }
+      .lucide {
+        font-family: 'LucideIcons';
+        font-size: 1.1rem; /* Slightly smaller default size */
+        line-height: 1;
+        display: inline-block; /* Ensure proper alignment */
+        vertical-align: middle;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+      }
+      /* Icon content mapping */
+      .lucide-sparkles::before { content: "\01fe"; }
+      .lucide-car::before { content: "\00a7"; }
+      .lucide-phone::before { content: "\01a9"; }
+      .lucide-mail::before { content: "\0171"; }
+      .lucide-facebook::before { content: "\00e4"; }
+      .lucide-instagram::before { content: "\0125"; }
+      .lucide-twitter::before { content: "\024b"; }
+      .lucide-menu::before { content: "\017a"; }
+      .lucide-x::before { content: "\025e"; }
+      .lucide-user::before { content: "\024e"; }
+      .lucide-university::before { content: "\04a0"; }
+      .lucide-brain-circuit::before { content: "\04e7"; }
+      .lucide-external-link::before { content: "\00e2"; }
+      .lucide-clipboard-list::before { content: "\04f3"; }
+      .lucide-arrow-right::before { content: "\004a"; } /* For links/buttons */
+    </style>
+
+    <script>
+      // Tailwind Config for OpenAI-inspired style
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              'brand-black': '#000000',
+              'brand-white': '#ffffff',
+              'brand-gray': {
+                50: '#fafafa', // Lighter grays for backgrounds/borders
+                100: '#f5f5f5',
+                200: '#e5e5e5',
+                300: '#d4d4d4',
+                400: '#a3a3a3', // Text grays
+                500: '#737373',
+                600: '#525252',
+                700: '#404040', // Darker grays
+                800: '#262626',
+                900: '#171717', // Near black
+              }
+            },
+            fontSize: { // Adjusting font sizes
+              'xs': '.75rem', 'sm': '.875rem', 'base': '1rem', 'lg': '1.125rem',
+              'xl': '1.25rem', '2xl': '1.5rem', '3xl': '1.875rem', '4xl': '2.25rem',
+              '5xl': '3rem', '6xl': '3.75rem', '7xl': '4.5rem', '8xl': '6rem', '9xl': '8rem' // Larger headline sizes
+            },
+            letterSpacing: {
+              tight: '-0.025em',
+              normal: '0',
+              wide: '0.025em',
+              wider: '0.05em',
+              widest: '0.1em',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+        /* Global styles for OpenAI feel */
+        body {
+            background-color: theme('colors.brand-black');
+            color: theme('colors.brand-gray.200'); /* Slightly softer than pure white */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Increased section padding */
+        section {
+            @apply py-24 md:py-32;
+        }
+        .section-header { /* Larger, cleaner section titles */
+            @apply text-4xl md:text-5xl font-bold text-center mb-6 text-brand-white tracking-tight;
+        }
+        .section-subheader { /* More subtle subheaders */
+            @apply text-lg md:text-xl text-center text-brand-gray-400 mb-16 md:mb-20 max-w-3xl mx-auto;
+        }
+        /* Button Styling - Minimalist */
+        .btn-primary {
+             @apply bg-brand-white text-brand-black font-semibold py-3 px-6 rounded-md hover:bg-brand-gray-200 transition duration-200 inline-flex items-center gap-2 text-base;
+        }
+         .btn-secondary { /* Subtle outline */
+             @apply border border-brand-gray-700 text-brand-gray-200 font-medium py-3 px-6 rounded-md hover:border-brand-gray-500 hover:text-brand-white transition duration-200 inline-flex items-center gap-2 text-base;
+         }
+         /* Link styling */
+         a {
+            @apply text-brand-gray-200 hover:text-brand-white transition duration-200;
+         }
+         /* Header style */
+        header {
+            @apply bg-brand-black/70 backdrop-blur-lg fixed top-0 z-50 w-full; /* Changed sticky to fixed */
+            border-bottom: 1px solid theme('colors.brand-gray.800');
+        }
+        /* Add padding to body to offset fixed header */
+        body {
+            padding-top: 70px; /* Adjust based on header height */
+        }
+        /* Card styling - simpler */
+        .service-card, .pricing-card {
+            @apply bg-brand-gray-900 p-8 rounded-lg border border-brand-gray-800;
+            transition: background-color 0.3s ease;
+        }
+        .service-card:hover, .pricing-card:hover {
+             background-color: theme('colors.brand-gray.800');
+        }
+
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <header>
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" title="Onyx Detailing Solutions Home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-auto text-brand-white" viewBox="0 0 150 30" fill="currentColor">
+                  <path stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" d="M10 8 L 15 3 L 20 8 M 15 3 V 10"></path><rect x="5" y="10" width="20" height="3" fill="currentColor"></rect><path stroke="currentColor" stroke-width="1.5" fill="none" d="M 5 13 L 3 16 Q 3 20 7 20 L 23 20 Q 27 20 27 16 L 25 13 Z"></path><circle cx="10" cy="20" r="2.5" fill="currentColor"></circle><circle cx="20" cy="20" r="2.5" fill="currentColor"></circle><text x="40" y="22" font-family="Inter, sans-serif" font-size="24" font-weight="300" letter-spacing="1" fill="currentColor"><tspan>O</tspan><tspan dx="2">N</tspan><tspan dx="2">Y</tspan><tspan dx="2">X</tspan></text>
+                </svg>
+            </a>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-base font-medium">About</a>
+                <a href="#services" class="text-base font-medium">Services</a>
+                <a href="#pricing" class="text-base font-medium">Pricing</a>
+                <a href="#gallery" class="text-base font-medium">Gallery</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYPnEPXCTcVCRe6AO4bkGe-DXgiag_zbzpZusqmBRPMN7mrA/viewform" target="_blank" rel="noopener noreferrer" class="btn-primary text-sm py-2 px-4">
+                    Book Now <i class="lucide lucide-external-link text-xs ml-1"></i>
+                </a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-brand-gray-200 focus:outline-none">
+                    <i class="lucide lucide-menu text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-brand-black border-t border-brand-gray-800 shadow-xl">
+            <div class="flex flex-col px-6 py-4 space-y-3">
+                <a href="#about" class="block text-base font-medium py-2">About</a>
+                <a href="#services" class="block text-base font-medium py-2">Services</a>
+                <a href="#pricing" class="block text-base font-medium py-2">Pricing</a>
+                <a href="#gallery" class="block text-base font-medium py-2">Gallery</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYPnEPXCTcVCRe6AO4bkGe-DXgiag_zbzpZusqmBRPMN7mrA/viewform" target="_blank" rel="noopener noreferrer" class="btn-primary w-full justify-center mt-2">
+                    Book Now <i class="lucide lucide-external-link text-xs ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="home" class="relative overflow-hidden min-h-[calc(100vh-70px)] flex items-center justify-center text-center bg-brand-black">
+         <div class="relative z-10 px-6 py-16">
+            <h1 class="text-6xl md:text-8xl font-bold mb-6 leading-tight tracking-tighter text-brand-white">
+                Meticulous Auto Care.
+            </h1>
+            <p class="text-xl md:text-2xl text-brand-gray-400 mb-10 max-w-3xl mx-auto">
+                Onyx Detailing Solutions provides expert interior & exterior cleaning with a focus on quality and customer satisfaction.
+            </p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYPnEPXCTcVCRe6AO4bkGe-DXgiag_zbzpZusqmBRPMN7mrA/viewform" target="_blank" rel="noopener noreferrer" class="btn-primary text-lg px-8 py-3">
+                Schedule Your Detail <i class="lucide lucide-arrow-right text-sm ml-1"></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="about" class="bg-brand-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="section-header">Precision & Passion</h2>
+            <p class="section-subheader">Learn about the Onyx difference.</p>
+            <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+                <div class="md:w-1/2">
+                     <div class="bg-brand-gray-800 aspect-video rounded-lg shadow-lg w-full flex items-center justify-center border border-brand-gray-700">
+                         <i class="lucide lucide-user text-brand-gray-600 text-6xl"></i>
+                    </div>
+                </div>
+                <div class="md:w-1/2 text-brand-gray-300 space-y-5 text-lg leading-relaxed">
+                     <h3 class="text-3xl font-semibold text-brand-white mb-4 tracking-tight">Meet Ben Prisby</h3>
+                    <p>
+                        Onyx Detailing Solutions is led by Ben Prisby, an Applied Engineering student at Michigan State University. Driven by an engineer's precision and a passion for automotive excellence, Ben established Onyx to deliver superior detailing grounded in quality and trust.
+                    </p>
+                     <ul class="space-y-3 text-brand-gray-400">
+                         <li class="flex items-start gap-3"><i class="lucide lucide-university text-brand-gray-200 mt-1 text-lg"></i><span>Michigan State University Applied Engineering Student.</span></li>
+                         <li class="flex items-start gap-3"><i class="lucide lucide-brain-circuit text-brand-gray-200 mt-1 text-lg"></i><span>Keen interest in technology, efficiency, and AI applications.</span></li>
+                     </ul>
+                    <p>
+                        We go beyond surface cleaning, focusing on an empathetic, people-first approach. Your vehicle is treated with meticulous care, ensuring clear communication and results that reflect our commitment to your satisfaction.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="bg-brand-black">
+        <div class="container mx-auto px-6">
+            <h2 class="section-header">Core Services</h2>
+            <p class="section-subheader">Focused solutions for a flawless vehicle.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div class="service-card flex flex-col items-center text-center">
+                    <i class="lucide lucide-car text-brand-white text-4xl mb-5"></i>
+                    <h3 class="text-2xl font-semibold mb-4 text-brand-white tracking-tight">Interior Deep Cleaning</h3>
+                    <p class="text-brand-gray-400 mb-6 flex-grow">
+                        Comprehensive cleaning of all interior surfaces, including deep vacuuming, precise wipe-downs, crystal-clear window cleaning, and detailed attention to vents and crevices.
+                    </p>
+                     <a href="#pricing" class="text-brand-gray-300 hover:text-brand-white font-medium inline-flex items-center gap-1 group">
+                         View Pricing <i class="lucide lucide-arrow-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                     </a>
+                </div>
+                <div class="service-card flex flex-col items-center text-center">
+                     <i class="lucide lucide-sparkles text-brand-white text-4xl mb-5"></i>
+                    <h3 class="text-2xl font-semibold mb-4 text-brand-white tracking-tight">Exterior Hand Wash</h3>
+                    <p class="text-brand-gray-400 mb-6 flex-grow">
+                        Careful hand wash using safe methods to lift dirt and grime, protecting your paint. Includes wheel and tire cleaning, plus thorough drying for a spotless finish.
+                    </p>
+                     <a href="#pricing" class="text-brand-gray-300 hover:text-brand-white font-medium inline-flex items-center gap-1 group">
+                         View Pricing <i class="lucide lucide-arrow-right text-xs opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="bg-brand-gray-900">
+        <div class="container mx-auto px-6">
+            <h2 class="section-header">Transparent Pricing</h2>
+            <p class="section-subheader">Straightforward costs for our detailing services.</p>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                 <div class="pricing-card">
+                     <h3 class="text-2xl font-semibold mb-5 text-brand-white tracking-tight text-center">Interior Deep Cleaning</h3>
+                     <ul class="space-y-3 text-lg text-brand-gray-300 mb-6">
+                         <li class="flex justify-between items-center border-b border-brand-gray-700 pb-2"><span>Sedans</span> <span class="font-semibold text-brand-white">$79</span></li>
+                         <li class="flex justify-between items-center border-b border-brand-gray-700 pb-2"><span>Midsize / SUVs</span> <span class="font-semibold text-brand-white">$99</span></li>
+                         <li class="flex justify-between items-center border-b border-brand-gray-700 pb-2"><span>Large Vehicles / Trucks</span> <span class="font-semibold text-brand-white">$119</span></li>
+                     </ul>
+                     <p class="text-sm text-brand-gray-500 text-center">Includes vacuum, wipe down, windows & details.</p>
+                 </div>
+                 <div class="pricing-card flex flex-col items-center text-center">
+                     <h3 class="text-2xl font-semibold mb-5 text-brand-white tracking-tight">Exterior Hand Wash</h3>
+                     <div class="my-auto"> {/* Center content vertically */}
+                         <p class="text-6xl font-bold text-brand-white mb-2">$30</p>
+                         <p class="text-lg text-brand-gray-400 mb-6">(All Vehicle Types)</p>
+                     </div>
+                      <p class="text-sm text-brand-gray-500 mt-auto">Includes hand wash, wheels, tires & drying.</p>
+                 </div>
+            </div>
+            <p class="text-center text-brand-gray-500 mt-12 text-base">
+                Note: Prices reflect standard conditions. Excessive soiling may require additional charges. Contact us with questions.
+            </p>
+             <div class="text-center mt-12">
+                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYPnEPXCTcVCRe6AO4bkGe-DXgiag_zbzpZusqmBRPMN7mrA/viewform" target="_blank" rel="noopener noreferrer" class="btn-primary text-lg px-8 py-3">
+                    Schedule Your Detail <i class="lucide lucide-clipboard-list ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="bg-brand-black">
+        <div class="container mx-auto px-6">
+            <h2 class="section-header">Showcase</h2>
+            <p class="section-subheader">The results of meticulous care.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="aspect-video bg-brand-gray-900 rounded-lg overflow-hidden border border-brand-gray-800">
+                    <img src="https://placehold.co/600x400/171717/e5e5e5?text=Clean+Interior+1" alt="Clean Interior Example 1" class="w-full h-full object-cover">
+                </div>
+                 <div class="aspect-video bg-brand-gray-900 rounded-lg overflow-hidden border border-brand-gray-800">
+                    <img src="https://placehold.co/600x400/171717/e5e5e5?text=Clean+Exterior+1" alt="Clean Exterior Example 1" class="w-full h-full object-cover">
+                </div>
+                 <div class="aspect-video bg-brand-gray-900 rounded-lg overflow-hidden border border-brand-gray-800">
+                    <img src="https://placehold.co/600x400/171717/e5e5e5?text=Clean+Interior+2" alt="Clean Interior Example 2" class="w-full h-full object-cover">
+                </div>
+                 <div class="aspect-video bg-brand-gray-900 rounded-lg overflow-hidden border border-brand-gray-800">
+                    <img src="https://placehold.co/600x400/171717/e5e5e5?text=Clean+Exterior+2" alt="Clean Exterior Example 2" class="w-full h-full object-cover">
+                </div>
+                 <div class="aspect-video bg-brand-gray-900 rounded-lg overflow-hidden border border-brand-gray-800">
+                    <img src="https://placehold.co/600x400/171717/e5e5e5?text=Detailed+Wheel" alt="Detailed Wheel Example" class="w-full h-full object-cover">
+                </div>
+                 <div class="aspect-video bg-brand-gray-900 rounded-lg overflow-hidden border border-brand-gray-800">
+                    <img src="https://placehold.co/600x400/171717/e5e5e5?text=Spotless+Finish" alt="Spotless Finish Example" class="w-full h-full object-cover">
+                </div>
+            </div>
+             <p class="text-center text-brand-gray-500 mt-12 text-base">Replace placeholders with high-quality photos of your work.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="bg-brand-gray-900">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="section-header">Contact & Booking</h2>
+            <p class="section-subheader">Reach out with questions or schedule your service online.</p>
+
+            <div class="mb-16 space-y-6 text-lg max-w-md mx-auto">
+                 <p class="flex items-center justify-center gap-3">
+                    <i class="lucide lucide-phone text-brand-gray-200 text-xl"></i>
+                    <a href="tel:2485335052" class="font-medium">248-533-5052</a>
+                </p>
+                <p class="flex items-center justify-center gap-3">
+                    <i class="lucide lucide-mail text-brand-gray-200 text-xl"></i>
+                    <a href="mailto:onyxdetailingsolutions@gmail.com" class="font-medium">onyxdetailingsolutions@gmail.com</a>
+                </p>
+                 <p class="text-base text-brand-gray-500 pt-4">
+                    Serving the [Your Service Area] region. <br class="sm:hidden"> Mobile service available.
+                 </p>
+            </div>
+
+            <div class="bg-brand-black p-10 md:p-16 rounded-lg max-w-3xl mx-auto border border-brand-gray-800">
+                 <h3 class="text-3xl md:text-4xl font-bold text-brand-white mb-5 tracking-tight">Ready for a Flawless Vehicle?</h3>
+                 <p class="text-brand-gray-400 mb-10 text-lg max-w-xl mx-auto">
+                     Use our simple online form to select your service and preferred time. It only takes a few minutes.
+                 </p>
+                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfYPnEPXCTcVCRe6AO4bkGe-DXgiag_zbzpZusqmBRPMN7mrA/viewform" target="_blank" rel="noopener noreferrer" class="btn-primary text-lg px-10 py-4">
+                    Go to Booking Form <i class="lucide lucide-clipboard-list ml-1"></i>
+                 </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-black py-10 text-center border-t border-brand-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#" aria-label="Facebook" class="text-brand-gray-500 hover:text-brand-white transition duration-300"><i class="lucide lucide-facebook text-2xl"></i></a>
+                <a href="#" aria-label="Instagram" class="text-brand-gray-500 hover:text-brand-white transition duration-300"><i class="lucide lucide-instagram text-2xl"></i></a>
+                <a href="#" aria-label="Twitter" class="text-brand-gray-500 hover:text-brand-white transition duration-300"><i class="lucide lucide-twitter text-2xl"></i></a>
+            </div>
+            <p class="text-sm text-brand-gray-500">&copy; <span id="current-year"></span> Onyx Detailing Solutions. All Rights Reserved.</p>
+             <p class="text-xs text-brand-gray-600 mt-2">Owned & Operated by Ben Prisby</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Mobile Menu Toggle
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = menuButton.querySelector('i');
+
+        menuButton.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('lucide-menu', isHidden);
+            menuIcon.classList.toggle('lucide-x', !isHidden);
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.addEventListener('click', (event) => {
+          let targetElement = event.target;
+          while (targetElement != null && targetElement.tagName !== 'A') {
+            targetElement = targetElement.parentElement;
+          }
+          if (targetElement && targetElement.tagName === 'A') {
+            mobileMenu.classList.add('hidden');
+            menuIcon.classList.remove('lucide-x');
+            menuIcon.classList.add('lucide-menu');
+          }
+        });
+
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Add padding to body based on header height after DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            const header = document.querySelector('header');
+            if (header) {
+                document.body.style.paddingTop = header.offsetHeight + 'px';
+            }
+        });
+        // Optional: Recalculate on resize if header height changes significantly
+        window.addEventListener('resize', function() {
+             const header = document.querySelector('header');
+             if (header) {
+                document.body.style.paddingTop = header.offsetHeight + 'px';
+            }
+        });
+
+    </script>
+
+</body>
+</html>
